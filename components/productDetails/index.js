@@ -95,7 +95,7 @@ export default function ProductDetail({ details }) {
 
               <button
                 onClick={addToCart}
-                className="btn btn-wide border-0 w-full mt-5 bg-orange-500 text-white text-sm"
+                className="btn btn-wide border-0 md:w-full mt-5 bg-orange-500 text-white text-sm"
               >
                
                 ADD TO CART
