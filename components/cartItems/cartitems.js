@@ -146,7 +146,7 @@ export default function CartItems() {
             onClick={submitFrom}
             className={`${
               !session ? "btn-disabled" : ""
-            } text-white btn btn-warning btn-wide w-full ${
+            } text-white btn btn-warning  w-full ${
               loading ? "loading" : ""
             }`}
           >
