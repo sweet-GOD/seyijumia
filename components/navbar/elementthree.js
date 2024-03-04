@@ -19,6 +19,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import MenuIcon from "@mui/icons-material/Menu";
 import SidebarMenuItem from "../header/SidebarMenuItem";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 export default function Elementthree() {
   return (
@@ -89,9 +90,12 @@ export default function Elementthree() {
               text="Other Categories"
               Icon={CategoryIcon}
             />
-            <button onClick={signIn} className="btn my-3 w-full shadow">
+            <button className="btn my-3 w-full shadow">
+              <Link href={"/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F"}>
+              
               Sign In
-            </button>
+              </Link>
+              </button>
           </div>
         </ul>
       </div>
