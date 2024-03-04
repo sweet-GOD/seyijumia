@@ -24,7 +24,7 @@ export default function Groceries() {
 
   return (
     <div className="pt-5">
-      <RecomHeader title="Groceries" color="bg-yellow-400" />
+      <RecomHeader title="Groceries" color="bg-gray-900" />
 
       <div className="carousel carousel-center bg-white w-full shadow-lg">
         {posts?.map((post) => (

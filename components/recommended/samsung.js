@@ -24,7 +24,7 @@ export default function Samsung() {
 
   return (
     <div className="pt-5">
-      <RecomHeader title="Samsung Products" color="bg-orange-400" />
+      <RecomHeader title="Samsung Products" color="bg-gray-900" />
 
       <div className="carousel carousel-center bg-white w-full shadow-lg">
         {posts?.map((post) => (

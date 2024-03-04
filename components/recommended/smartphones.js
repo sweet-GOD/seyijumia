@@ -24,7 +24,7 @@ export default function Smartphones() {
 
   return (
     <div className="pt-5">
-      <RecomHeader title="Smartphones" color="bg-red-400" />
+      <RecomHeader title="Smartphones" color="bg-gray-900" />
 
       <div className="carousel carousel-center bg-white w-full shadow-lg">
         {posts?.map((post) => (

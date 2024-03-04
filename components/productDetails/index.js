@@ -10,6 +10,7 @@ import { cartState } from "../../atom/cartAtom";
 
 export default function ProductDetail({ details }) {
   const [cart, setCart] = useRecoilState(cartState);
+  console.log(details)
 
   const addToCart = () => {
     const newCart = [...cart, details];
@@ -30,21 +31,36 @@ export default function ProductDetail({ details }) {
 
       <div className="flex flex-col lg:flex-row p-3 space-x-4">
         <div className="w-[100%] lg:w-[70%]">
-          <div className="flex bg-white p-2 rounded-lg shadow-lg">
-            <div className="w-[35%]">
+          <div className="grid grid-cols-5 bg-white p-2 rounded-lg shadow-lg">
+            <div className="md:col-span-2 col-span-5">
               <img
                 src={details.images[0]}
                 alt="Product Detail"
                 className="w-[100%] rounded"
               />
-              <span className="text-l">SHARE THIS PRODUCT</span>
-              <p className="space-x-5">
+
+             {/* <div className="grid grid-cols-4">
+                {details.images.map((detail) => (
+                  <div className="h-[60px] overflow-hidden">
+
+                  <img
+                  src={detail}
+                  alt="Product Detail"
+                  className="h-[60px] "
+                  />
+                  </div>
+                  
+                  ))}
+              </div>  */}
+              
+              <span className="text-lg p-2">SHARE THIS PRODUCT</span>
+              <p className="space-x-5 p-2">
                 <FacebookOutlinedIcon />
                 <TwitterIcon />
               </p>
             </div>
 
-            <div className="w-[65%] ps-4">
+            <div className="md:col-span-3 col-span-5 ps-4">
               {/* <div className="badge badge-accent">{details.brand}</div> */}
 
               <p className="text-2xl mt-3">{details.title}</p>

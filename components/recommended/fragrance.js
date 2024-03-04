@@ -24,7 +24,7 @@ export default function Fragrances() {
 
   return (
     <div className="pt-5">
-      <RecomHeader title="Fragrances" color="bg-red-400" />
+      <RecomHeader title="Fragrances" color="bg-gray-900" />
 
       <div className="carousel carousel-center bg-white w-full shadow-lg">
         {posts?.map((post) => (

@@ -24,7 +24,7 @@ export default function Apple() {
 
   return (
     <div className="pt-5">
-      <RecomHeader title="Apple Products" color="bg-orange-400" />
+      <RecomHeader title="Apple Products" color="bg-gray-900" />
 
       <div className="carousel carousel-center bg-white w-full shadow-lg">
         {posts?.map((post) => (

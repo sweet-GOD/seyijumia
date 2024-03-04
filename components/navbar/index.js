@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <>
       <div className="bg-warning  mb-0">
-        <div className=" mx-auto w-full align-middle md:max-w-7xl mx-auto">
+        <div className=" mx-auto w-full align-middle md:max-w-7xl ">
           <img
             src="https://ng.jumia.is/cms/0-1-initiatives/free-delivery/2022/June/Free-delivery-top-strip.gif"
             alt="navimage"
