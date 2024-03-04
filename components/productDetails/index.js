@@ -34,7 +34,7 @@ export default function ProductDetail({ details }) {
           <div className="grid grid-cols-5 bg-white p-2 rounded-lg shadow-lg">
             <div className="md:col-span-2 col-span-5">
               <img
-                src={details.images[0]}
+                src={details.images.length > 10 ? details.images : details.images[0]}
                 alt="Product Detail"
                 className="w-[100%] rounded"
               />
@@ -60,7 +60,7 @@ export default function ProductDetail({ details }) {
               </p>
             </div>
 
-            <div className="md:col-span-3 col-span-5 ps-4">
+            <div className="md:col-span-3 col-span-5 md:p-4">
               {/* <div className="badge badge-accent">{details.brand}</div> */}
 
               <p className="text-2xl mt-3">{details.title}</p>
@@ -95,7 +95,7 @@ export default function ProductDetail({ details }) {
 
               <button
                 onClick={addToCart}
-                className="btn btn-wide border-0 md:w-full mt-5 bg-orange-500 text-white text-sm"
+                className="btn  border-0 w-full mt-5 bg-orange-500 text-white text-sm"
               >
                
                 ADD TO CART

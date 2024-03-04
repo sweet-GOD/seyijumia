@@ -34,6 +34,7 @@ export default function NewProducts() {
             image={post.images}
             price={NGnaira.format(post.price)}
             id={post.id}
+            discountPercentage={post.discountPercentage}
           />
         ))}
       </div>

@@ -34,6 +34,7 @@ export default function Smartphones() {
             image={post.images[0]}
             price={NGnaira.format(post.price)}
             id={post.id}
+            discountPercentage={post.discountPercentage}
           />
         ))}
       </div>

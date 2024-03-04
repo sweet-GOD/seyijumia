@@ -5,7 +5,7 @@ import { NGnaira } from "@/lib/help";
 import Error from "../error";
 
 export default function CategoryDetails({ products }) {
-  console.log(products);
+  // console.log(products);
 
   if (products.length == 0) return <Error />;
   return (
@@ -18,11 +18,11 @@ export default function CategoryDetails({ products }) {
         />
       </div> */}
 
-      <RecomHeader title={products[0].category}  color="bg-blue-900" />
+      <RecomHeader title={products[0].category}  color="bg-gray-900" />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 md:gap-0 bg-white mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 md:gap-0 gap-4 p-2 bg-white mx-auto">
         {products.map((product) => (
-          <div className="p-2" key={product.id}>
+          <div className="p-2 shadow" key={product.id}>
             <img
               src={product.images[0]}
               alt="Product Image"

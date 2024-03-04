@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import { uploadOrder } from "@/lib/uploadOrder";
 import { Modal } from "@mui/material";
 import Message from "./message";
+import PaymentComponent from "../payment/PaymentComponent";
 
 export default function CartItems() {
   const { data: session } = useSession();
@@ -87,6 +88,7 @@ export default function CartItems() {
             item={item}
             index={index}
             removeItem={removeItem}
+            cartSum={cartSum}
           />
         ))}
       </div>
@@ -159,6 +161,8 @@ export default function CartItems() {
 
         <div></div>
 
+        {/* <PaymentComponent cartSum={cartSum} formData={formData} /> */}
+
         <div className="bg-white w-full p-3  text-sm rounded-b-lg shadow-lg mt-3">
           Returns are easy Free return within 15 days for Official Store items
           and 7 days for other eligible items
@@ -175,3 +179,5 @@ export default function CartItems() {
     </div>
   );
 }
+
+

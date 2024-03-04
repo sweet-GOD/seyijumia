@@ -12,7 +12,7 @@ export default function Message() {
         <ShoppingCartIcon className="h-12 mr-3" />
         Order Received Successfully
       </span>
-      <h2 className="mt-3">Congraulations Your Order has been Placed</h2>
+      <h2 className="my-3">Congraulations Your Order has been Placed</h2>
 
       <Link href="/" className="btn btn-warning btn-sm text-white">
         Home

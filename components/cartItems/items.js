@@ -12,11 +12,15 @@ export default function Items({ item, index, removeItem }) {
       className="flex space-x-5 p-3"
       style={{ borderBottom: "2px solid #ededed" }}
     >
-      <img className="w-[150px] h-[150px]" src={item.images[0]} alt={item.title} />
+      <img
+        className="w-[150px] h-[150px]"
+        src={item.images.length > 10 ? item.images : item.images[0]}
+        alt={item.title}
+      />
 
       <div>
         <span className="text-sm line-clamp-2">
-          <Link href={`/product/${item.id}`} className="hover:underline">
+          <Link href={item.id.length > 4 ? `/productfir/${item.id}` : `/product/${item.id}`} className="hover:underline">
             {item.title}
           </Link>
         </span>
@@ -40,11 +44,25 @@ export default function Items({ item, index, removeItem }) {
         </p>
 
         <button
-          className="btn btn-warning btn-sm btn-outline mt-3"
+          className="btn btn-warning btn-sm btn-outline mt-4"
           onClick={() => removeItem(index)}
         >
           <DeleteIcon /> REMOVE
         </button>
+        <div className="mt-2">
+          <button
+            className="btn btn-warning btn-sm btn-outline"
+            // onClick={() => removeItem(index)}
+          >
+            +
+          </button>
+          <button
+            className="btn btn-warning btn-sm btn-outline ms-3"
+            // onClick={() => removeItem(index)}
+          >
+            -
+          </button>
+        </div>
       </div>
 
       <div className="hidden md:inline">
