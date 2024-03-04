@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: #f1f1f2;
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+*{
+  object-fit: cover;
+  /* overflow-x: hidden; */
+  /* overflow-y: hidden; */
+}
+
+
+.underLine:hover{
+  text-decoration: underline;
+}
+
+.hoverBlue:hover{
+  color: rgb(84, 95, 210) !important;
+}
+:hover .hoverBlue:hover i{
+  color: rgb(84, 95, 210) !important;
+}
+
+.hoverOrange:hover{
+  color: #FF9900 !important;
+}
+:hover .hoverOrange:hover i{
+  color: #FF9900 !important;
+}
+
+.badge{
+  position: absolute;
+  right: 16px;
+  font-size: 12px;
+  width: 6px;
+  height: 22px;
+}
+
+
+/* ***************************** */
+
+#smallHeader{
+  background: #F1F1F2;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
+}
+
+#smallHeader .container{
+  gap: 420px;
+}
+
+#smallHeader a{
+  font-size: 12px;
+  color: #C1C1C2;
+}
+
+#smallHeader i{
+  font-size: 12px;
+  color: #C1C1C2;
+}
+
+
+.NavBarr{
+  position:sticky;
+  top: 0px;
+  z-index: 3;
+}
+
+.input{
+  /* width: 1000px !important; */
+  border-color: #333;
+}
+
+.srcCon{
+  width: 700px;
+}
+
+.srcBtn{
+  /* height: 20px !important; */
+  font-size: 14px !important;
+}
+
+.AccountDrop{
+  position: absolute;
+  top: 66px;
+  /* right: 20px; */
+  width: 220px;
+  overflow: hidden;
+  /* right: 20%; */
+}
+
+.AccountDrop .btn{
+  background: #FF9900;
+  width: 100%;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+}
+
+.AccountDrop .btn:hover{
+  background: #db8300;
+}
+
+.AccountDrop span:hover{
+  cursor: pointer;
+  background: #ddd;
+  font-weight: 500;
+
+}
+
+/* *************** */
+.reco img{
+  height: 250px;
+  padding: 10px;
+}
+
+.reco .carousel-item:hover{
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+
+.prodDet img{
+  height: 250px;
+}
+
+.signPage{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100% !important;
+  z-index: 99;
+  background: #fff;
+  padding: 40px 560px;
+}
+
+@media (max-width: 1000px) {
+  #smallHeader{
+    display: none;
+  }
+  .srcCon{
+    width: 0px;
+  }
+  .dropdown-content{
+    height: 95vh;
+  }
+  
+  .items-start{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* gap: 35px; */
+
+  }
+  .signPage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100% !important;
+    z-index: 99;
+    background: #fff;
+    padding: 40px 40px;
+  }
+}
