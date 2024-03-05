@@ -35,10 +35,10 @@ export default function Items({ item, index, removeItem }) {
 
         <p>
           {!item.deliveryPrice ? (
-            <span className="text-green-800 text-sm">Free Delivery</span>
+            <span className="text-green-800 text-sm">{NGnaira.format(item.price)}</span>
           ) : (
             <span className="text-gray-500 text-sm">
-              + shipping from {NGnaira.format(item.price)}
+             {NGnaira.format(item.price)} + shipping fee {NGnaira.format(item.deliveryPrice)} 
             </span>
           )}
         </p>

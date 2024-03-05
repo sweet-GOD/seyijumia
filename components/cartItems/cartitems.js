@@ -34,9 +34,9 @@ export default function CartItems() {
     setCartSum(Sum);
 
     var Summ = 0;
-    // for (var i = 0; i < cart.length; i++) {
-    //   Summ += parseInt(cart[i].deliveryPrice);
-    // }
+    for (var i = 0; i < cart.length; i++) {
+      Summ += parseInt(cart[i].deliveryPrice);
+    }
     setDeliverySum(Summ);
   }, [cart]);
 
@@ -120,7 +120,7 @@ export default function CartItems() {
             Cart Summary
           </span>
           <div className="divider"></div>
-          <div>Sub Total : {NGnaira.format(cartSum)}</div>
+          <div>Sub Total : {deliverySum ? NGnaira.format(cartSum + deliverySum) : NGnaira.format(cartSum)}</div>
           <p className="text-sm text-gray-400  py-2">
             {!deliverySum ? (
               <>Delivery Fee : FREE </>
@@ -171,7 +171,7 @@ export default function CartItems() {
               loading ? "loading" : ""
             }`}
           >
-            Checkout ({NGnaira.format(cartSum + deliverySum)})
+            Checkout ({deliverySum ? NGnaira.format(cartSum + deliverySum) : NGnaira.format(cartSum)})
           </button>
           {!session && (
             <p className="text-sm text-gray-300" align="center">
