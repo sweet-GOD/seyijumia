@@ -18,6 +18,7 @@ export default function CartItems() {
   const [cartSum, setCartSum] = useState();
   const [loading, setLoading] = useState(false);
   const [deliverySum, setDeliverySum] = useState();
+  const [quantity, setQuantity] = useState(1);
   const [formData, setFormData] = useState({
     phoneNumber: "",
     deliveryAddress: "",
@@ -110,6 +111,8 @@ export default function CartItems() {
             index={index}
             removeItem={removeItem}
             cartSum={cartSum}
+            quantity={quantity}
+            setQuantity={setQuantity}
           />
         ))}
       </div>
@@ -120,7 +123,7 @@ export default function CartItems() {
             Cart Summary
           </span>
           <div className="divider"></div>
-          <div>Sub Total : {deliverySum ? NGnaira.format(cartSum + deliverySum) : NGnaira.format(cartSum)}</div>
+          <div>Sub Total : {deliverySum ? NGnaira.format((cartSum + deliverySum) * quantity) : NGnaira.format(cartSum * quantity)}</div>
           <p className="text-sm text-gray-400  py-2">
             {!deliverySum ? (
               <>Delivery Fee : FREE </>
@@ -171,7 +174,7 @@ export default function CartItems() {
               loading ? "loading" : ""
             }`}
           >
-            Checkout ({deliverySum ? NGnaira.format(cartSum + deliverySum) : NGnaira.format(cartSum)})
+            Checkout ({deliverySum ? NGnaira.format((cartSum + deliverySum) * quantity) : NGnaira.format(cartSum * quantity)})
           </button>
           {!session && (
             <p className="text-sm text-gray-300" align="center">

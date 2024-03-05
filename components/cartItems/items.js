@@ -6,7 +6,24 @@ import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function Items({ item, index, removeItem }) {
+export default function Items({ item, index, removeItem, quantity, setQuantity }) {
+  // const [quantity, setQuantity] = useState(1);
+  
+
+  const incrementQuantity = () => {
+    if (quantity < 10){
+
+      setQuantity((prevQuantity) => prevQuantity + 1);
+    }
+    return;
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
   return (
     <div
       className="flex space-x-5 p-3"
@@ -38,7 +55,7 @@ export default function Items({ item, index, removeItem }) {
             <span className="text-green-800 text-sm">{NGnaira.format(item.price)}</span>
           ) : (
             <span className="text-gray-500 text-sm">
-             {NGnaira.format(item.price)} + shipping fee {NGnaira.format(item.deliveryPrice)} 
+              {NGnaira.format(item.price)} + shipping fee {NGnaira.format(item.deliveryPrice)} 
             </span>
           )}
         </p>
@@ -49,16 +66,18 @@ export default function Items({ item, index, removeItem }) {
         >
           <DeleteIcon /> REMOVE
         </button>
+
         <div className="mt-2">
           <button
             className="btn btn-warning btn-sm btn-outline"
-            // onClick={() => removeItem(index)}
+            onClick={incrementQuantity}
           >
             +
           </button>
+          <span className="mx-2">{quantity}</span>
           <button
-            className="btn btn-warning btn-sm btn-outline ms-3"
-            // onClick={() => removeItem(index)}
+            className="btn btn-warning btn-sm btn-outline"
+            onClick={decrementQuantity}
           >
             -
           </button>
@@ -66,7 +85,7 @@ export default function Items({ item, index, removeItem }) {
       </div>
 
       <div className="hidden md:inline">
-        <b className="text-xl">{NGnaira.format(item.price)}</b>
+        <b className="text-xl">{NGnaira.format(item.price * quantity)}</b>
       </div>
     </div>
   );
