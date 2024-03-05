@@ -1,4 +1,8 @@
-import { fetchProductById, fetchProducts } from "@/lib/fetchData";
+import {
+  fetchProductById,
+  fetchProductByIdFir,
+  fetchProducts,
+} from "@/lib/fetchData";
 import ProductDetail from "@/components/productDetails";
 
 export default function ProductDetails(props) {
@@ -13,14 +17,25 @@ export async function getStaticProps(context) {
   const productId = context.params.productID;
   console.log(productId);
 
-  const product = await fetchProductById(productId);
+  if (productId.length > 4) {
+    const product = await fetchProductByIdFir(productId);
 
-  return {
-    props: {
-      selectedProduct: product,
-    },
-    revalidate: 30,
-  };
+    return {
+      props: {
+        selectedProduct: product,
+      },
+      revalidate: 30,
+    };
+  } else {
+    const product = await fetchProductById(productId);
+
+    return {
+      props: {
+        selectedProduct: product,
+      },
+      revalidate: 30,
+    };
+  }
 }
 
 export async function getStaticPaths() {
