@@ -15,7 +15,7 @@ export default function ProductDetails(props) {
 
 export async function getStaticProps(context) {
   const productId = context.params.productID;
-  console.log(productId);
+  
 
   if (productId.length > 4) {
     const product = await fetchProductByIdFir(productId);

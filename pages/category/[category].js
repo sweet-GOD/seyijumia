@@ -1,5 +1,5 @@
 import CategoryDetails from "@/components/category/categorydetails";
-import { fetchProductsbyCategory } from "@/lib/fetchData";
+import { fetchProductsbyCategory, fetchProductsbyCategoryFir } from "@/lib/fetchData";
 import React from "react";
 
 export default function Category({ products }) {
@@ -12,11 +12,14 @@ export default function Category({ products }) {
 
 export async function getServerSideProps(context) {
   const category = context.params.category;
+  
   const products = await fetchProductsbyCategory(category);
+  const productsfir = await fetchProductsbyCategoryFir(category);
 
   return {
     props: {
       products,
+      productsfir
     },
   };
 }

@@ -19,7 +19,6 @@ import CategoryIcon from "@mui/icons-material/Category";
 import MenuIcon from "@mui/icons-material/Menu";
 import SidebarMenuItem from "../header/SidebarMenuItem";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
 
 export default function Elementthree() {
   return (
@@ -30,7 +29,7 @@ export default function Elementthree() {
         </label>
         <ul
           tabIndex={0}
-          className="dropdown-content menu p-2 shadow bg-white rounded-box w-52"
+          className="dropdown-content menu p-2 shadow bg-white mt-3 w-[60vw]"
         >
           <div className="items-start bg-white p-2 mx-2 h-[100%]">
             <SidebarMenuItem
@@ -56,7 +55,7 @@ export default function Elementthree() {
             />
             <SidebarMenuItem
               link="smartphones"
-              text="Phones & Tablets"
+              text="Smartphones"
               Icon={PhoneAndroidIcon}
             />
             <SidebarMenuItem
@@ -90,12 +89,9 @@ export default function Elementthree() {
               text="Other Categories"
               Icon={CategoryIcon}
             />
-            <button className="btn my-3 w-full shadow">
-              <Link href={"/auth/signin?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2F"}>
-              
+            <button onClick={signIn} className="btn my-3 w-full shadow">
               Sign In
-              </Link>
-              </button>
+            </button>
           </div>
         </ul>
       </div>

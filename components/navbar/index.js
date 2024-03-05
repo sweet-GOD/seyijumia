@@ -80,7 +80,7 @@ export default function Navbar() {
         </div>
       </section>
 
-      <div className="bg-white items-center  NavBarr ">
+      <div className="bg-transparent backdrop-blur-3xl items-center  NavBarr ">
         <div className="md:max-w-7xl mx-auto flex py-3 flex-row justify-between space-x-2 pe-4">
           <span className="flex space-x-2">
             <Elementthree />
