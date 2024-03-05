@@ -8,7 +8,8 @@ import { useSession } from "next-auth/react";
 import { uploadOrder } from "@/lib/uploadOrder";
 import { Modal } from "@mui/material";
 import Message from "./message";
-import PaymentComponent from "../payment/PaymentComponent";
+import { useFlutterwave } from 'flutterwave-react-v3';
+
 
 export default function CartItems() {
   const { data: session } = useSession();
@@ -37,7 +38,25 @@ export default function CartItems() {
     //   Summ += parseInt(cart[i].deliveryPrice);
     // }
     setDeliverySum(Summ);
-  });
+  }, [cart]);
+
+  const config = {
+    public_key: 'FLWPUBK_TEST-d5bf583900dc8fdd264c19fcede65f68-X',
+    tx_ref: Date.now(),
+    amount: cartSum + deliverySum,
+    currency: 'NGN',
+    payment_options: 'card,mobilemoney,ussd',
+    customer: {
+      email: session?.user.email,
+      phone_number: formData.phoneNumber,
+      name: session?.user.name,
+    },
+    customizations: {
+      title: 'my Payment Title',
+      description: 'Payment for items in cart',
+      logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
+    },
+  };
 
   const submitFrom = async (event) => {
     event.preventDefault();
@@ -61,6 +80,8 @@ export default function CartItems() {
 
     if (result) {
       // success
+      useFlutterwave(config)
+      
       setCart([]);
       handleOpen();
     } else {

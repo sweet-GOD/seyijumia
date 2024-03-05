@@ -1,10 +1,10 @@
 import { fetchProductByIdFir, fetchProducts } from "@/lib/fetchData";
-import ProductDetail from "@/components/productDetails";
+import ProductDetailfir from "@/components/productDetails/indexfir";
 
 export default function ProductDetailsFir(props) {
   return (
     <div className="md:max-w-7xl mx-auto">
-      <ProductDetail details={props.selectedProduct} />
+      <ProductDetailfir details={props.selectedProduct} />
     </div>
   );
 }
