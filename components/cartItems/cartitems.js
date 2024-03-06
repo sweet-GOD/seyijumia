@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import Items from "./items";
 import { useEffect, useState } from "react";
 import { NGnaira } from "@/lib/help";
-
+import { serverTimestamp } from 'firebase/firestore';
 import { useSession } from "next-auth/react";
 import { uploadOrder } from "@/lib/uploadOrder";
 import { Modal } from "@mui/material";
@@ -22,6 +22,8 @@ export default function CartItems() {
   const [formData, setFormData] = useState({
     phoneNumber: "",
     deliveryAddress: "",
+    fullName: "",
+    email: "",
   });
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -48,9 +50,9 @@ export default function CartItems() {
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
     customer: {
-      email: session?.user.email,
+      email: formData.email,
       phone_number: formData.phoneNumber,
-      name: session?.user.name,
+      name: formData.fullName,
     },
     customizations: {
       title: 'my Payment Title',
@@ -66,12 +68,19 @@ export default function CartItems() {
       alert("Please fill in your phone number and delivery address");
       return;
     }
+    if (cart.length === 0){
+      alert("Cart cannot be empty dumbo!")
+      return;
+    }
     setLoading(true);
 
     const result = await uploadOrder(
       formData.phoneNumber,
       formData.deliveryAddress,
-      session.user.name,
+      formData.fullName,
+      formData.email,
+      // session.user.name,
+      
       cartSum,
       deliverySum,
       cart
@@ -135,10 +144,25 @@ export default function CartItems() {
           <div className="mt-3">
             <input
               type="text"
-              value={session?.user.name}
-              placeholder="Name"
-              disabled
+              // value={session?.user.name}
+              placeholder="Fullname"
+              // disabled
               className="input input-bordered input-warning w-full"
+          onChange={(event) =>
+            setFormData({ ...formData, fullName: event.target.value })
+          }
+            />
+          </div>
+          <div className="mt-3">
+            <input
+              type="email"
+              // value={session?.user.name}
+              placeholder="Email"
+              // disabled
+              className="input input-bordered input-warning w-full"
+          onChange={(event) =>
+            setFormData({ ...formData, email: event.target.value })
+          }
             />
           </div>
 
@@ -169,18 +193,18 @@ export default function CartItems() {
           <button
             onClick={submitFrom}
             className={`${
-              !session ? "btn-disabled" : ""
+              session ? "btn-disabled" : ""
             } text-white btn btn-warning  w-full ${
               loading ? "loading" : ""
             }`}
           >
             Checkout ({deliverySum ? NGnaira.format((cartSum + deliverySum) * quantity) : NGnaira.format(cartSum * quantity)})
           </button>
-          {!session && (
+          {/* {!session && (
             <p className="text-sm text-gray-300" align="center">
               Please Login to be able to checkout
             </p>
-          )}
+          )} */}
         </div>
 
         <div></div>

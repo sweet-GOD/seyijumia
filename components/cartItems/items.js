@@ -9,10 +9,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 export default function Items({ item, index, removeItem, quantity, setQuantity }) {
   // const [quantity, setQuantity] = useState(1);
   
+  
 
   const incrementQuantity = () => {
     if (quantity < 10){
-
+      
       setQuantity((prevQuantity) => prevQuantity + 1);
     }
     return;
@@ -67,7 +68,7 @@ export default function Items({ item, index, removeItem, quantity, setQuantity }
           <DeleteIcon /> REMOVE
         </button>
 
-        <div className="mt-2">
+        {/* <div className="mt-2">
           <button
             className="btn btn-warning btn-sm btn-outline"
             onClick={incrementQuantity}
@@ -81,7 +82,7 @@ export default function Items({ item, index, removeItem, quantity, setQuantity }
           >
             -
           </button>
-        </div>
+        </div> */}
       </div>
 
       <div className="hidden md:inline">
