@@ -18,18 +18,11 @@ import InventoryIcon from "@mui/icons-material/Inventory";
 export default function Navbar() {
   const [acDrop, setAcDrop] = useState(true);
   const [helpDrop, setHelpDrop] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
 
   const router = useRouter();
   const { data: session } = useSession();
   // React Recoil
   const [cart, setCart] = useRecoilState(cartState);
-
-  const handleSearch = () => {
-    if (searchQuery.trim() !== "") {
-      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
-    }
-  }
 
   return (
     <>
@@ -48,6 +41,7 @@ export default function Navbar() {
       >
         <div className="container flex pt-0 justify-start items-center">
           <p className="ml-10">
+            
             <a style={{ color: "#ff9900" }} className="underLine" href="">
               Sell on Jumia
             </a>
@@ -103,167 +97,160 @@ export default function Navbar() {
               type="text"
               placeholder="SEARCH"
               className="input border-0 input-bordered bg-white  w-full outline-none  my-auto hidden lg:inline"
-              onChange={(e) => setSearchQuery(e.target.value)}
             />
 
-            <button onClick={() => handleSearch()} className="ms-3 btn btn-warning text-white hidden lg:inline srcBtn">
+            <button className="ms-3 btn btn-warning text-white hidden md:inline srcBtn">
               SEARCH
             </button>
           </div>
 
-          <div className="flex ">
-            <span className="hidden md:inline pt-2 ">
-              {session ? (
-                <div className="flex items-center">
-                  <PermIdentityIcon className="h-10 my-auto" />
-                  <span
-                    className="my-auto pe-3 cursor-pointer"
-                    onClick={signOut}
-                  >
-                    HI, {session.user.name.slice(0, 10)}
-                  </span>
-
-                  <div className="position-relative">
-                    <button
-                      onClick={() => setHelpDrop((prev) => !prev)}
-                      className="flex hoverOrange justify-center items-center px-3"
-                    >
-                      <h4>
-                        <HelpOutlineIcon />
-                      </h4>
-                      <h6 className="px-2">HELP</h6>
-                      <i>
-                        <ExpandMoreIcon />
-                      </i>
-                    </button>
-                    {helpDrop === false && (
-                      <div className="AccountDrop shadow-sm rounded-2 bg-white ">
-                        <div className="border-bottom pt-3">
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Help Center</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Place an order</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Payment options</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Track an order</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Cancel an order</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>
-                              Returns & Refunds
-                            </p>
-                          </span>
-                        </div>
-                        <div className="px-3">
-                          <button className="btn my-3 shadow">
-                            <i className="bi bi-chat-dots pe-2"></i> LIVE CHAT
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <div className="position-relative flex">
+        <div className="flex ">
+          <span className="hidden md:inline pt-2 ">
+            {session ? (
+              <div className="flex items-center">
+                <PermIdentityIcon className="h-10 my-auto" />
+                <span className="my-auto pe-3 cursor-pointer" onClick={signOut}>
+                  HI, {session.user.name.slice(0,10)}
+                </span>
+                
+                <div className="position-relative">
                   <button
-                    onClick={() => setAcDrop((prev) => !prev)}
-                    className="flex AccBtn hoverOrange justify-center items-center px-3 "
+                    onClick={() => setHelpDrop((prev) => !prev)}
+                    className="flex hoverOrange justify-center items-center px-3"
                   >
                     <h4>
-                      <PermIdentityIcon />
+                      <HelpOutlineIcon />
                     </h4>
-                    <h6 className="px-2">Account</h6>
+                    <h6 className="px-2">HELP</h6>
                     <i>
                       <ExpandMoreIcon />
                     </i>
                   </button>
-                  {acDrop === false && (
+                  {helpDrop === false && (
                     <div className="AccountDrop shadow-sm rounded-2 bg-white ">
-                      <div className="px-3">
-                        <button onClick={signIn} className="btn my-3 shadow">
-                          SIGN IN
-                        </button>
+                      <div className="border-bottom pt-3">
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Help Center</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Place an order</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Payment options</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Track an order</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Cancel an order</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Returns & Refunds</p>
+                        </span>
                       </div>
-                      <div className=" pt-0">
-                        <span className="flex items-center px-3 py-3">
-                          <h4 className=" pe-2">
-                            <PermIdentityIcon />
-                          </h4>
-                          <p style={{ fontSize: "14px" }}>My Account</p>
-                        </span>
-                        <span className="flex items-center px-3 py-3">
-                          <h6 className="pe-3">
-                            <InventoryIcon />
-                          </h6>
-                          <p style={{ fontSize: "14px" }}>Orders</p>
-                        </span>
-                        <span className="flex items-center px-3 py-3">
-                          <h6 className="pe-3">
-                            <FavoriteBorderIcon />
-                          </h6>
-                          <p style={{ fontSize: "14px" }}>Saved Items</p>
-                        </span>
+                      <div className="px-3">
+                        <button className="btn my-3 shadow">
+                          <i className="bi bi-chat-dots pe-2"></i> LIVE CHAT
+                        </button>
                       </div>
                     </div>
                   )}
-
-                  <div className="position-relative">
-                    <button
-                      onClick={() => setHelpDrop((prev) => !prev)}
-                      className="flex hoverOrange justify-center items-center px-3 "
-                    >
-                      <h4>
-                        <HelpOutlineIcon />
-                      </h4>
-                      <h6 className="px-2">HELP</h6>
-                      <i>
-                        <ExpandMoreIcon />
-                      </i>
-                    </button>
-                    {helpDrop === false && (
-                      <div className="AccountDrop shadow-sm rounded-2 bg-white ">
-                        <div className="border-bottom pt-3">
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Help Center</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Place an order</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Payment options</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Track an order</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>Cancel an order</p>
-                          </span>
-                          <span className="flex px-3 pt-3">
-                            <p style={{ fontSize: "14px" }}>
-                              Returns & Refunds
-                            </p>
-                          </span>
-                        </div>
-                        <div className="px-3">
-                          <button className="btn my-3 shadow">
-                            <i className="bi bi-chat-dots pe-2"></i> LIVE CHAT
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
                 </div>
-              )}
-            </span>
+              </div>
+            ) : (
+              <div className="position-relative flex">
+                <button
+                  onClick={() => setAcDrop((prev) => !prev)}
+                  className="flex AccBtn hoverOrange justify-center items-center px-3 "
+                >
+                  <h4>
+                    <PermIdentityIcon />
+                  </h4>
+                  <h6 className="px-2">Account</h6>
+                  <i>
+                    <ExpandMoreIcon />
+                  </i>
+                </button>
+                {acDrop === false && (
+                  <div className="AccountDrop shadow-sm rounded-2 bg-white ">
+                    <div className="px-3">
+                      <button onClick={signIn} className="btn my-3 shadow">
+                        SIGN IN
+                      </button>
+                    </div>
+                    <div className=" pt-0">
+                      <span className="flex items-center px-3 py-3">
+                        <h4 className=" pe-2">
+                          <PermIdentityIcon />
+                        </h4>
+                        <p style={{ fontSize: "14px" }}>My Account</p>
+                      </span>
+                      <span className="flex items-center px-3 py-3">
+                        <h6 className="pe-3">
+                          <InventoryIcon />
+                        </h6>
+                        <p style={{ fontSize: "14px" }}>Orders</p>
+                      </span>
+                      <span className="flex items-center px-3 py-3">
+                        <h6 className="pe-3">
+                          <FavoriteBorderIcon />
+                        </h6>
+                        <p style={{ fontSize: "14px" }}>Saved Items</p>
+                      </span>
+                    </div>
+                  </div>
+                )}
 
-            <ShoppingCart items={cart.length} />
+                <div className="position-relative">
+                  <button
+                    onClick={() => setHelpDrop((prev) => !prev)}
+                    className="flex hoverOrange justify-center items-center px-3 "
+                  >
+                    <h4>
+                      <HelpOutlineIcon />
+                    </h4>
+                    <h6 className="px-2">HELP</h6>
+                    <i>
+                      <ExpandMoreIcon />
+                    </i>
+                  </button>
+                  {helpDrop === false && (
+                    <div className="AccountDrop shadow-sm rounded-2 bg-white ">
+                      <div className="border-bottom pt-3">
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Help Center</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Place an order</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Payment options</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Track an order</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Cancel an order</p>
+                        </span>
+                        <span className="flex px-3 pt-3">
+                          <p style={{ fontSize: "14px" }}>Returns & Refunds</p>
+                        </span>
+                      </div>
+                      <div className="px-3">
+                        <button className="btn my-3 shadow">
+                          <i className="bi bi-chat-dots pe-2"></i> LIVE CHAT
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </span>
+
+          <ShoppingCart items={cart.length} />
           </div>
+
         </div>
       </div>
     </>
