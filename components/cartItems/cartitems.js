@@ -3,13 +3,12 @@ import { useRecoilState } from "recoil";
 import Items from "./items";
 import { useEffect, useState } from "react";
 import { NGnaira } from "@/lib/help";
-import { serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { uploadOrder } from "@/lib/uploadOrder";
 import { Modal } from "@mui/material";
 import Message from "./message";
-import { useFlutterwave } from "flutterwave-react-v3";
 import emailjs from "@emailjs/browser";
+import { PaystackButton } from "react-paystack";
 
 export default function CartItems() {
   const { data: session } = useSession();
@@ -19,6 +18,7 @@ export default function CartItems() {
   const [loading, setLoading] = useState(false);
   const [deliverySum, setDeliverySum] = useState();
   const [quantity, setQuantity] = useState(1);
+  const publicKey = "pk_test_4ac9f85b089c3b25edb8897d446ce3e9b30ee737";
   const [formData, setFormData] = useState({
     phoneNumber: "",
     deliveryAddress: "",
@@ -43,26 +43,26 @@ export default function CartItems() {
     setDeliverySum(Summ);
   }, [cart]);
 
-  const config = {
-    public_key: "FLWPUBK_TEST-d5bf583900dc8fdd264c19fcede65f68-X",
-    tx_ref: Date.now(),
-    amount: cartSum + deliverySum,
-    currency: "NGN",
-    payment_options: "card,mobilemoney,ussd",
-    customer: {
-      email: formData.email,
-      phone_number: formData.phoneNumber,
+  const componentProps = {
+    email: formData.email,
+    amount: deliverySum
+      ? ((cartSum + deliverySum) * quantity * 100)
+      : ((cartSum * quantity) * 100),
+    metadata: {
       name: formData.fullName,
+      phone: formData.phoneNumber,
     },
-    customizations: {
-      title: "my Payment Title",
-      description: "Payment for items in cart",
-      logo: "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
+    publicKey,
+    text: "Pay Now",
+    onSuccess: () => {
+      alert("Thanks for doing business with us! Come back soon!!"),
+        submitFrom();
     },
+    onClose: () => alert("Wait! Don't leave :("),
   };
 
-  const submitFrom = async (event) => {
-    event.preventDefault();
+  const submitFrom = async () => {
+    // event.preventDefault();
 
     if (!formData.phoneNumber || !formData.deliveryAddress) {
       alert("Please fill in your phone number and delivery address");
@@ -101,9 +101,6 @@ export default function CartItems() {
     setLoading(false);
 
     if (result) {
-      // success
-      useFlutterwave(config);
-
       setCart([]);
       handleOpen();
     } else {
@@ -207,8 +204,8 @@ export default function CartItems() {
             ></textarea>
           </div>
 
-          <button
-            onClick={submitFrom}
+          <PaystackButton
+            {...componentProps}
             className={`${
               session ? "btn-disabled" : ""
             } text-white btn btn-warning  w-full ${loading ? "loading" : ""}`}
@@ -218,7 +215,7 @@ export default function CartItems() {
               ? NGnaira.format((cartSum + deliverySum) * quantity)
               : NGnaira.format(cartSum * quantity)}
             )
-          </button>
+          </PaystackButton>
           {/* {!session && (
             <p className="text-sm text-gray-300" align="center">
               Please Login to be able to checkout
