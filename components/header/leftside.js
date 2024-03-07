@@ -21,6 +21,7 @@ import DiamondIcon from "@mui/icons-material/Diamond";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import DownhillSkiingIcon from "@mui/icons-material/DownhillSkiing";
+import NoCrashIcon from '@mui/icons-material/NoCrash';
 import CategoryIcon from "@mui/icons-material/Category";
 
 import SidebarMenuItem from "./SidebarMenuItem";
@@ -73,9 +74,9 @@ export default function Leftside() {
         />
         <SidebarMenuItem link="gaming" text="Gaming" Icon={SportsEsportsIcon} />
         <SidebarMenuItem
-          link="sportinggoods"
-          text="Sporting Goods"
-          Icon={DownhillSkiingIcon}
+          link="cars"
+          text="Cars"
+          Icon={NoCrashIcon}
         />
         <SidebarMenuItem
           link="fragrances"

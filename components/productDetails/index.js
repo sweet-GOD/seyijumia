@@ -39,21 +39,21 @@ export default function ProductDetail({ details }) {
                 className="w-[100%] rounded"
               />
 
-             {/* <div className="grid grid-cols-4">
+             {/* <div className="grid grid-cols-4 mt-2 gap-2">
                 {details.images.map((detail) => (
-                  <div className="h-[60px] overflow-hidden">
+                  <div className="h-[60px] overflow-hidden rounded">
 
                   <img
                   src={detail}
                   alt="Product Detail"
-                  className="h-[60px] "
+                  className="w-full  detailImg "
                   />
                   </div>
                   
                   ))}
               </div>  */}
               
-              <span className="text-lg p-2">SHARE THIS PRODUCT</span>
+              <span className="text-lg p-2 ">SHARE THIS PRODUCT</span>
               <p className="space-x-5 p-2">
                 <FacebookOutlinedIcon />
                 <TwitterIcon />

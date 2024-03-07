@@ -6,7 +6,7 @@ export default function Post({ title, image, price, id, discountPercentage }) {
     <>
       <div className="carousel-item relative flex flex-col w-[120px] md:w-[200px] p-2">
         
-        <div className="badge border-0 bg-transparent px-8 text-orange-400 mt-2 backdrop-blur shadow font-bold">{discountPercentage ? <> -{discountPercentage}% </> : ""}</div>
+        <div className="badge border-0 bg-transparent px-8 text-orange-400 mt-2 backdrop-blur shadow font-bold">{discountPercentage ? <> -{discountPercentage}% </> : "InStock"}</div>
         <Link href={`/product/${id}`} className="hover:underline  ">
           <img
             src={image}

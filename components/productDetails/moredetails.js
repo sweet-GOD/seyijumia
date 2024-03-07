@@ -16,7 +16,7 @@ export default function Moredetails({ specifications, details, features }) {
         <div className=" p-2 bg-white">{details}</div>
       </div>
 
-      {/* <div
+      <div
         style={{ borderBottom: "1px solid #ededed" }}
         className="bg-white p-3 rounded-t-lg text-black mt-2 rounded-lg shadow-lg"
       >
@@ -30,7 +30,7 @@ export default function Moredetails({ specifications, details, features }) {
       >
         <p className="text-xl">Product Features</p>
         <div className=" p-2 bg-white">{features}</div>
-      </div> */}
+      </div>
     </div>
   );
 }

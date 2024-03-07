@@ -12,6 +12,7 @@ import Skincare from "@/components/recommended/skincare";
 import Groceries from "@/components/recommended/groceries";
 import HomeDecoration from "@/components/recommended/home-decoration";
 import NewProducts from "@/components/recommended/newProducts";
+import Cars from "@/components/recommended/cars";
 
 
 
@@ -25,6 +26,8 @@ export default function Home() {
       <Recommended />
 
       <NewProducts />
+
+      <Cars />
 
       <Apple />
 
