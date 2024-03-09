@@ -99,7 +99,7 @@ export default function Navbar() {
               className="input border-0 input-bordered bg-white  w-full outline-none  my-auto hidden lg:inline"
             />
 
-            <button className="ms-3 btn btn-warning text-white hidden md:inline srcBtn">
+            <button className="ms-3 btn btn-warning text-white hidden lg:inline srcBtn">
               SEARCH
             </button>
           </div>

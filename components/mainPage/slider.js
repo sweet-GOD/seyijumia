@@ -3,9 +3,9 @@ import RecomHeader from "../recommended/header";
 
 export default function SliderMainPage() {
   return (
-    <div className="mt-5 text-center">
+    <div className="mt-5 text-center rounded-3xl rounded-t-none overflow-hidden">
       <RecomHeader title="Official  Store" color="bg-blue-900" />
-      <div className="carousel w-full">
+      <div className="carousel w-full h-64 md:h-96">
         <div id="item1" className="carousel-item w-full">
           <img
             src="https://ng.jumia.is/cms/0-1-initiatives/jbps/updated-jbp-2022/reckitt/Desktop_MLP_slider__1168x384_(Show_Now).jpg"

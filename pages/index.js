@@ -37,12 +37,13 @@ export default function Home() {
       <Laptops />
 
       <Smartphones />
+      
+      <SliderMainPage />
 
       <Fragrances />
 
       <Skincare />
 
-      <SliderMainPage />
 
       <Groceries />
 

@@ -23,10 +23,10 @@ export default function Apple() {
   }, []);
 
   return (
-    <div className="pt-5">
+    <div className="pt-5 rounded-3xl overflow-hidden">
       <RecomHeader title="Apple Products" color="bg-gray-900" />
 
-      <div className="carousel carousel-center bg-white w-full shadow-lg">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 bg-white w-full shadow-lg">
         {posts?.map((post) => (
           <Post
             key={post.id}
