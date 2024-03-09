@@ -10,7 +10,7 @@ export default function Post({ title, image, price, id, discountPercentage }) {
         <Link href={`/product/${id}`} className="hover:underline  ">
           <img
             src={image}
-            className="mx-2 w-[100%] h-[120px] md:h-[200px]   rounded-t-none rounded-2xl"
+            className="mx-2 w-[100%] h-[160px] md:h-[200px]   rounded-t-none rounded-2xl"
             alt={title}
           />
           <div className="py-3 ps-1">
