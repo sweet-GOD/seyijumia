@@ -5,7 +5,7 @@ export default function Recommended() {
   return (
     <div className="pt-5  reco">
       {/* carousel carousel-center */}
-      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-2 p-2  w-full text-gray-800 bg-white pb-3 shadow-lg rounded-3xl">
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-2 p-2  w-full text-gray-800 bg-white pb-3 shadow-lg rounded-t-none rounded-3xl">
         <div className="carousel-item rounded-3xl  flex flex-col w-[100%] md:w-[200px] ">
           <img
             src="https://ng.jumia.is/cms/0-1-homepage/0-0-thumbnails/2024/Artboard_13.png"

@@ -28,8 +28,8 @@ import SidebarMenuItem from "./SidebarMenuItem";
 
 export default function Leftside() {
   return (
-    <div className="hidden md:inline md:w-[40%] lg:w-[20%]">
-      <div className="items-start bg-white p-2 h-[100%] rounded-md shadow-2xl">
+    <div className="hidden md:inline md:w-[40%] lg:w-[20%] rounded-t-none rounded-2xl overflow-hidden">
+      <div className="items-start bg-white p-2 h-[100%]  shadow-2xl">
         <SidebarMenuItem
           link="groceries"
           text="Supermarket"
