@@ -9,7 +9,7 @@ export default function CategoryDetails({ products }) {
 
   if (products.length == 0) return <Error />;
   return (
-    <div className=" p-2 text-center">
+    <div className=" p-2 text-center rounded-3xl overflow-hidden">
       {/* <div className="w-full p-3 bg-white mb-3">
         <img
           src="https://ng.jumia.is/cms/0-6-anniversary/2023/Consumer-needs/CB_1152x252_4.jpg"
@@ -20,7 +20,7 @@ export default function CategoryDetails({ products }) {
 
       <RecomHeader title={products[0].category}  color="bg-gray-900" />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 md:gap-0 gap-4 p-2 bg-white mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 md:gap-0 gap-4 p-2 bg-white mx-auto">
         {products.map((product) => (
           <div className="p-2 shadow" key={product.id}>
             <img
