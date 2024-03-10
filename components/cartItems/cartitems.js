@@ -13,12 +13,14 @@ import { PaystackButton } from "react-paystack";
 export default function CartItems() {
   const { data: session } = useSession();
   // React Recoil
+
+  const [storedResponse, setstoredResponse] = useState("")  
+  // const [cartResponse, setcartResponse] = useState("")  
   const [cart, setCart] = useRecoilState(cartState);
   const [cartSum, setCartSum] = useState();
   const [loading, setLoading] = useState(false);
   const [deliverySum, setDeliverySum] = useState();
   const [quantity, setQuantity] = useState(1);
-  const [storedResponse, setstoredResponse] = useState("")  
   const publicKey = "pk_test_4ac9f85b089c3b25edb8897d446ce3e9b30ee737";
   const [formData, setFormData] = useState({
     phoneNumber: "",
@@ -45,8 +47,10 @@ export default function CartItems() {
 
     if (typeof window !== 'undefined') {
       const storedRespons = JSON.parse(localStorage.getItem("userToken"));
+      // const cartRespons = JSON.parse(localStorage.getItem("cart"))
       // Do something with storedData
       setstoredResponse(storedRespons)
+      // setcartResponse(cartRespons)
     }
   }, [cart]);
 

@@ -14,6 +14,7 @@ export default function ProductDetail({ details }) {
 
   const addToCart = () => {
     const newCart = [...cart, details];
+    localStorage.setItem("cart", JSON.stringify(newCart));
     setCart(newCart);
   };
 

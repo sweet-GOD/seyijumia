@@ -31,7 +31,7 @@ export default function Items({ item, index, removeItem, quantity, setQuantity }
       style={{ borderBottom: "2px solid #ededed" }}
     >
       <img
-        className="w-[150px] h-[150px]"
+        className="w-[150px] h-[150px] rounded-lg"
         src={item.images.length > 10 ? item.images : item.images[0]}
         alt={item.title}
       />
