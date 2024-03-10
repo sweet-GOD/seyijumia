@@ -19,8 +19,21 @@ import CategoryIcon from "@mui/icons-material/Category";
 import MenuIcon from "@mui/icons-material/Menu";
 import SidebarMenuItem from "../header/SidebarMenuItem";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default function Elementthree() {
+  const router = useRouter();
+  const [storedResponse, setstoredResponse] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedRespons = JSON.parse(localStorage.getItem("userToken"));
+      // Do something with storedData
+      setstoredResponse(storedRespons);
+    }
+  }, []);
   return (
     <>
       <div className="dropdown dropdown-bottom cursor-pointer md:hidden">
@@ -78,7 +91,7 @@ export default function Elementthree() {
               link="gaming"
               text="Gaming"
               Icon={SportsEsportsIcon}
-            />
+            />  
             <SidebarMenuItem
               link="sportinggoods"
               text="Sporting Goods"
@@ -89,9 +102,21 @@ export default function Elementthree() {
               text="Other Categories"
               Icon={CategoryIcon}
             />
-            <button onClick={signIn} className="btn my-3 w-full shadow">
-              Sign In
-            </button>
+            {storedResponse ? (
+              <button
+                onClick={() => localStorage.clear("userToken")}
+                className="btn my-3 w-full shadow"
+              >
+                Log Out
+              </button>
+            ) : (
+              <button
+                onClick={() => router.push("/login")}
+                className="btn my-3 w-full shadow"
+              >
+                Sign In
+              </button>
+            )}
           </div>
         </ul>
       </div>

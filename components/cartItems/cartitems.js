@@ -18,6 +18,7 @@ export default function CartItems() {
   const [loading, setLoading] = useState(false);
   const [deliverySum, setDeliverySum] = useState();
   const [quantity, setQuantity] = useState(1);
+  const [storedResponse, setstoredResponse] = useState("")  
   const publicKey = "pk_test_4ac9f85b089c3b25edb8897d446ce3e9b30ee737";
   const [formData, setFormData] = useState({
     phoneNumber: "",
@@ -41,6 +42,12 @@ export default function CartItems() {
       Summ += parseInt(cart[i].deliveryPrice);
     }
     setDeliverySum(Summ);
+
+    if (typeof window !== 'undefined') {
+      const storedRespons = JSON.parse(localStorage.getItem("userToken"));
+      // Do something with storedData
+      setstoredResponse(storedRespons)
+    }
   }, [cart]);
 
   const componentProps = {
@@ -170,9 +177,9 @@ export default function CartItems() {
           <div className="mt-3">
             <input
               type="email"
-              // value={session?.user.name}
+              value={storedResponse?.email}
               placeholder="Email"
-              // disabled
+              disabled
               className="input input-bordered input-warning w-full"
               onChange={(event) =>
                 setFormData({ ...formData, email: event.target.value })
@@ -207,7 +214,7 @@ export default function CartItems() {
           <PaystackButton
             {...componentProps}
             className={`${
-              session ? "btn-disabled" : ""
+              !storedResponse ? "btn-disabled" : ""
             } text-white btn btn-warning  w-full ${loading ? "loading" : ""}`}
           >
             Checkout (

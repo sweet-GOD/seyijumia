@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Shoppingcart({ items }) {
   return (
-    <Link href="/cart">
+    <Link href="/cart" className="">
       <span className="relative">
         <ShoppingCartIcon className="h-12 mr-2" />
         <span className=" badge badge-warning text-white mr-5">{items}</span>

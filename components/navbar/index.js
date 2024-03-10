@@ -14,6 +14,7 @@ import { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import { useEffect } from "react";
 
 export default function Navbar() {
   const [acDrop, setAcDrop] = useState(true);
@@ -23,6 +24,16 @@ export default function Navbar() {
   const { data: session } = useSession();
   // React Recoil
   const [cart, setCart] = useRecoilState(cartState);
+
+  const [storedResponse, setstoredResponse] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedRespons = JSON.parse(localStorage.getItem("userToken"));
+      // Do something with storedData
+      setstoredResponse(storedRespons);
+    }
+  }, []);
 
   return (
     <>
@@ -81,7 +92,7 @@ export default function Navbar() {
       </section>
 
       <div className="bg-transparent backdrop-blur-3xl items-center  NavBarr ">
-        <div className="md:max-w-7xl mx-auto flex py-3 flex-row justify-between space-x-2 pe-4">
+        <div className="md:max-w-7xl mx-auto flex py-3 flex-row  justify-between space-x-2 pe-4">
           <span className="flex space-x-2">
             <Elementthree />
             <img
@@ -104,13 +115,13 @@ export default function Navbar() {
             </button>
           </div>
 
-        <div className="flex ">
+        <div className="flex">
           <span className="hidden md:inline pt-2 ">
-            {session ? (
+            {storedResponse ? (
               <div className="flex items-center">
                 <PermIdentityIcon className="h-10 my-auto" />
-                <span className="my-auto pe-3 cursor-pointer" onClick={signOut}>
-                  HI, {session.user.name.slice(0,10)}
+                <span className="my-auto pe-3 cursor-pointer" onClick={() => localStorage.clear("userToken")}>
+                  HI, {storedResponse.email.slice(0,10)}
                 </span>
                 
                 <div className="position-relative">
@@ -174,7 +185,7 @@ export default function Navbar() {
                 {acDrop === false && (
                   <div className="AccountDrop shadow-sm rounded-2 bg-white ">
                     <div className="px-3">
-                      <button onClick={signIn} className="btn my-3 shadow">
+                      <button onClick={() => router.push("/login")} className="btn my-3 shadow">
                         SIGN IN
                       </button>
                     </div>
