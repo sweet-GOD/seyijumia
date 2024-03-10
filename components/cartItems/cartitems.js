@@ -177,9 +177,9 @@ export default function CartItems() {
           <div className="mt-3">
             <input
               type="email"
-              value={storedResponse?.email}
+              // value={storedResponse?.email}
               placeholder="Email"
-              disabled
+              // disabled
               className="input input-bordered input-warning w-full"
               onChange={(event) =>
                 setFormData({ ...formData, email: event.target.value })
@@ -223,11 +223,11 @@ export default function CartItems() {
               : NGnaira.format(cartSum * quantity)}
             )
           </PaystackButton>
-          {/* {!session && (
-            <p className="text-sm text-gray-300" align="center">
+          {!storedResponse && (
+            <p className="text-sm text-gray-500 mt-3" align="center">
               Please Login to be able to checkout
             </p>
-          )} */}
+          )}
         </div>
 
         <div></div>

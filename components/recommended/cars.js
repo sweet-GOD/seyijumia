@@ -13,7 +13,7 @@ export default function Cars() {
       try {
         const products = await fetchProductsByBrandFir("Lamborghini");
         setPosts(products);
-        console.log(products);
+        // console.log(products);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
